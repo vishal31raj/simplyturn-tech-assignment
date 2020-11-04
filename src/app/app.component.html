@@ -1,0 +1,65 @@
+<div class="container text-center">
+  <!-- Users List -->
+  <div class="row mt-4">
+    <div class="col-3">
+      <h5>User Id</h5>
+    </div>
+    <div class="col-3">
+      <h5>Email</h5>
+    </div>
+    <div class="col-3">
+      <h5>First Name</h5>
+    </div>
+    <div class="col-3">
+      <h5>Last Name</h5>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let user of usersList">
+    <div class="col-3">
+      <p>{{ user.id }}</p>
+    </div>
+    <div class="col-3">
+      <p>{{ user.email }}</p>
+    </div>
+    <div class="col-3">
+      <p>{{ user.first_name }}<p>
+    </div>
+    <div class="col-3">
+      <p>{{ user.last_name }}</p>
+    </div>
+  </div>
+
+  <!-- Search Box -->
+  <div class="row mt-4">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)] = "inputValue"
+        placeholder="Enter email, First Name or Last Name">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Found user -->
+  <div class="row" *ngIf="!userNotFoundAlert">
+    <div class="col-3">
+      <h6>{{ requiredId }}</h6>
+    </div>
+    <div class="col-3">
+      <h6>{{ requiredEmail }}</h6>
+    </div>
+    <div class="col-3">
+      <h6>{{ requiredFName }}</h6>
+    </div>
+    <div class="col-3">
+      <h6>{{ requiredLName }}</h6>
+    </div>
+  </div>
+
+  <!-- User not found alert -->
+  <p *ngIf="userNotFoundAlert" style="color: red;">User not found</p>
+</div>
